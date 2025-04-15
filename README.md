@@ -56,10 +56,19 @@ sequenceDiagram
 > 🧨 Before you click the "Assessment Complete" button on the Learning Platform, add your answers below for each question and make a commit. It is your option to request a face-to-face meeting with a coach for a vocabulary review.
 
 1. Should transient state be represented in a database diagram? Why, or why not?
-   > Your answer here
+   
+   > Transient state (TS) should be represented as an object with a lifeline in our sequence diagram. This ensures that the flow of data/state, detected by event listenrs when a user interacts with the browser (clicking a button, selecting a dropdown option), and it's interactions with other components, is clear and easy to understand.
+   
+
 2. In the **FoodTruck** module, you are **await**ing the invocataion of all of the component functions _(e.g. sales, veggie options, etc.)_. Why must you use the `await` keyword there? Explain what happens if you remove it.
-   > Your answer here
+   
+   > Without the `await` keyword, our function will try to execute as soon as the POST request is sent. The await keyword allows the function to pause until the promise is resolved, and in this case, will allow our data to return in the correct format and get rendered to the browser. I don't recall the exact message I was seeing on the browser, or if it was due to the absence of the await keyword, but I believe I saw {promise resolved} instead of the html content we built in our module.
+
 3. When the user is making choices by selecting radio buttons, explain how that data is retained so that the **Purchase Combo** button works correctly.
-   > Your answer here
+
+   > Each time a selection a selection is made, our Event Listeners, within each food item's module, will trigger the Event Handler to confirm the object selected, which invokes the setter function imported from TransientState.js, then updates our temporary object. 
+
 4. You used the `map()` array method in the self assessment _(at least, you should have since it is a learning objective)_. Explain why that function is helpful as a replacement for a `for..of` loop.
-   > Your answer here
+
+   > I believe the .map method is preferred because it's more conscise (less code = cleaner) and it automatically returns an array as opposed to having to use the .push method.
+   	
